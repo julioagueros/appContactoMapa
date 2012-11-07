@@ -1,0 +1,31 @@
+
+
+{% extends 'contactos/contact/base.html' %}
+
+{% load i18n %}
+
+{% block filename %}
+  /home/usuario2012/djangoApps/appContactoMapa/contactos/templates/contactos/contact/contact_archive_week.html
+{% endblock %}
+
+{% block title %}
+  {% trans "Contact Week Archive" %}
+{% endblock %}
+
+{% block header-link %}
+  {% trans "Contact Week Archive" %}
+{% endblock %}
+
+{% block header-description %}
+  {% trans "A weekly archive page showing all objects in a given week." %}
+{% endblock %}
+
+{% block content %}
+  <h2>
+    {% blocktrans %}
+      Contacts created during the week beginning on {{ week }}
+    {% endblocktrans %}
+  </h2>
+  {% include 'contactos/contact/object_table_list.html' %}
+  {% include 'contactos/contact/pagination.html' %}
+{% endblock %}
