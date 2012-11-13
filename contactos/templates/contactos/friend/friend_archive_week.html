@@ -1,0 +1,31 @@
+
+
+{% extends 'contactos/friend/base.html' %}
+
+{% load i18n %}
+
+{% block filename %}
+  /home/usuario2012/djangoApps/appContactoMapa/contactos/templates/contactos/friend/friend_archive_week.html
+{% endblock %}
+
+{% block title %}
+  {% trans "Friend Week Archive" %}
+{% endblock %}
+
+{% block header-link %}
+  {% trans "Friend Week Archive" %}
+{% endblock %}
+
+{% block header-description %}
+  {% trans "A weekly archive page showing all objects in a given week." %}
+{% endblock %}
+
+{% block content %}
+  <h2>
+    {% blocktrans %}
+      Friends created during the week beginning on {{ week }}
+    {% endblocktrans %}
+  </h2>
+  {% include 'contactos/friend/object_table_list.html' %}
+  {% include 'contactos/friend/pagination.html' %}
+{% endblock %}

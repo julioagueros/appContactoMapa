@@ -1,0 +1,48 @@
+
+
+{% extends 'contactos/user/base.html' %}
+
+{% load i18n %}
+
+{% block filename %}
+  /home/usuario2012/djangoApps/appContactoMapa/contactos/templates/contactos/user/user_archive.html
+{% endblock %}
+{% block title %}
+  {% trans "User Archive Index" %}
+{% endblock %}
+{% block breadcrumbs %}
+  <ul class='breadcrumb'>
+    <li>
+      <a href='{% url contactos_user_archive_index %}'>
+        {% trans "Archive Index" %}
+      </a>
+    </li>
+  </ul>
+{% endblock %}
+{% block header-link %}
+  <a href='{% url contactos_user_archive_index %}'>
+    {% trans "User Archive Index" %}
+  </a>
+{% endblock %}
+{% block header-description %}
+  {% trans "A top-level index page showing the latest objects, by date." %}
+{% endblock %}
+{% block content %}
+  <h2>
+    By Year
+  </h2>
+  <ul class='nav nav-tabs nav-stacked'>
+    {% for date in date_list %}
+      <li>
+        <a href='{% url contactos_user_year_archive year=date.year %}'>
+          {{ date.year }}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+  <h2>
+    {% trans "Recent Users" %}
+  </h2>
+  {% include 'contactos/user/object_table_list.html' %}
+  {% include 'contactos/user/pagination.html' %}
+{% endblock %}

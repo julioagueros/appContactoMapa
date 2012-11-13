@@ -1,0 +1,84 @@
+
+
+{% extends 'contactos/friend/base.html' %}
+
+{% load i18n %}
+
+{% block filename %}
+  /home/usuario2012/djangoApps/appContactoMapa/contactos/templates/contactos/friend/friend_detail.html
+{% endblock %}
+
+{% block title %}
+  {% trans "Friend Detail" %}
+{% endblock %}
+
+
+{% block breadcrumbs %}
+  <ul class='breadcrumb'>
+    <li>
+      <a href='{% url contactos_friend_archive_index %}'>
+        {% trans "Archive Index" %}
+      </a>
+      <span class='divider'>
+        /
+      </span>
+    </li>
+    <li>
+      <a href='{% url contactos_friend_year_archive year=object.created_at.year %}'>
+        {% trans "Year Archive" %}
+      </a>
+      <span class='divider'>
+        /
+      </span>
+    </li>
+    <li>
+      <a href='{% url contactos_friend_month_archive year=object.created_at.year month=object.created_at.month %}'>
+        {% trans "Month Archive" %}
+      </a>
+      <span class='divider'>
+        /
+      </span>
+    </li>
+    <li>
+      <a href='{% url contactos_friend_day_archive year=object.created_at.year month=object.created_at.month day=object.created_at.day %}'>
+        {% trans "Day Archive" %}
+      </a>
+      <span class='divider'>
+        /
+      </span>
+    </li>
+    <li>
+      <a href='{% url contactos_friend_date_detail year=object.created_at.year month=object.created_at.month day=object.created_at.day pk=object.pk %}'>
+        {% trans "Date Detail" %}
+      </a>
+    </li>
+  </ul>
+{% endblock %}
+
+
+{% block header-link %}
+  <a href='{{ object.get_absolute_url }}'>
+    {% trans "Friend Detail" %}
+  </a>
+{% endblock %}
+
+{% block header-description %}
+  {% trans "A page representing an individual object." %}
+{% endblock %}
+
+{% block content %}
+  {% include 'contactos/friend/object_table_detail.html' %}
+  <form action='{% url contactos_friend_delete pk=object.pk %}' charset='utf-8' method='post'>
+    <fieldset>
+      {% csrf_token %}
+      <div class='form-actions'>
+        <a class='btn btn-success' href='{% url contactos_friend_update pk=object.pk %}'>
+          {% trans "Update" %}
+        </a>
+        <button class='btn btn-danger' type='submit'>
+          {% trans "Delete" %}
+        </button>
+      </div>
+    </fieldset>
+  </form>
+{% endblock %}

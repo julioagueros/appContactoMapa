@@ -1,29 +1,29 @@
 
 
-{% extends 'contactos/contact/base.html' %}
+{% extends 'contactos/friend/base.html' %}
 
 {% load i18n %}
 
 {% block filename %}
-  /home/usuario2012/djangoApps/appContactoMapa/contactos/templates/contactos/contact/contact_form.html
+  /home/usuario2012/djangoApps/appContactoMapa/contactos/templates/contactos/friend/friend_form.html
 {% endblock %}
 
 {% block title %}
   {% if object %}
-    {% trans "Update Contact" %}
+    {% trans "Update Friend" %}
   {% else %}
-    {% trans "Create a New Contact" %}
+    {% trans "Create a New Friend" %}
   {% endif %}
 {% endblock %}
 
 {% block header-link %}
   {% if object %}
-    <a href='{% url contactos_contact_update pk=object.pk %}'>
-      {% trans "Contact Update" %}
+    <a href='{% url contactos_friend_update pk=object.pk %}'>
+      {% trans "Friend Update" %}
     </a>
   {% else %}
-    <a href='{% url contactos_contact_create %}'>
-      {% trans "Contact Create" %}
+    <a href='{% url contactos_friend_create %}'>
+      {% trans "Friend Create" %}
     </a>
   {% endif %}
 {% endblock %}
@@ -37,12 +37,13 @@
 {% endblock %}
 
 {% block content %}
- 
-  <form action='{% if object %}{% url contactos_contact_update pk=object.pk %}{% else %}{% url contactos_contact_create %}{% endif %}' method='post' encoding='utf-8'>
+  <form action='{% if object %}{% url contactos_friend_update pk=object.pk %}{% else %}{% url contactos_friend_create %}{% endif %}' method='post' encoding='utf-8'>
     <fieldset>
       {% csrf_token %}
       {{ form }}
-      <div class='form-actions'>
+      {{form.name = 'pato'}}
+  		<div id="map_canvas" style="width:500px; height:500px"></div>				       
+      <div class='form-actions'>   
         <button class='btn btn-large btn-success' type='submit'>
           {% if object %}
             {% trans "Update" %}
@@ -53,10 +54,5 @@
       </div>
     </fieldset>
   </form>
-{% endblock %}
 
-{% block mapa %}
-
-		CACAROTOOOOOOOOOOOOOOOOOOOOOOOO
-		<div id="map_canvas" style="width:50%; height:50%"></div>				 
 {% endblock %}

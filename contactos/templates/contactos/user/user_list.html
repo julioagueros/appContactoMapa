@@ -1,0 +1,27 @@
+
+
+{% extends 'contactos/user/base.html' %}
+
+{% load i18n %}
+
+{% block filename %}
+  /home/usuario2012/djangoApps/appContactoMapa/contactos/templates/contactos/user/user_list.html
+{% endblock %}
+
+{% block header-link %}
+  <a href='{% url contactos_user_list %}'>
+    {% trans "User List" %}
+  </a>
+{% endblock %}
+
+{% block header-description %}
+  {% trans "A page representing a list of objects." %}
+{% endblock %}
+
+{% block content %}
+  <h2>
+    {% trans "Users" %}
+  </h2>
+  {% include 'contactos/user/object_table_list.html' %}
+  {% include 'contactos/user/pagination.html' %}
+{% endblock %}

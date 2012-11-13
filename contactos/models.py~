@@ -55,7 +55,6 @@ class Profile(models.Model):
     user = models.OneToOneField(User)
     oauth_token = models.CharField(max_length=200)
     oauth_secret = models.CharField(max_length=200)
-
 class Friend(models.Model):
     name = models.CharField(max_length=200)
     lastname = models.CharField(max_length=200)
@@ -66,7 +65,7 @@ class Friend(models.Model):
     address = models.CharField(max_length=200)
     latitude = models.FloatField()
     longitude = models.FloatField()
-    userowner = models.ForeignKey(User)
+    userowner = models.ForeignKey('User')
     created_at = models.DateTimeField(
         auto_now_add=True,
         default=now(),

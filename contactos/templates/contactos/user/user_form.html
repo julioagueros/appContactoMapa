@@ -1,29 +1,29 @@
 
 
-{% extends 'contactos/contact/base.html' %}
+{% extends 'contactos/user/base.html' %}
 
 {% load i18n %}
 
 {% block filename %}
-  /home/usuario2012/djangoApps/appContactoMapa/contactos/templates/contactos/contact/contact_form.html
+  /home/usuario2012/djangoApps/appContactoMapa/contactos/templates/contactos/user/user_form.html
 {% endblock %}
 
 {% block title %}
   {% if object %}
-    {% trans "Update Contact" %}
+    {% trans "Update User" %}
   {% else %}
-    {% trans "Create a New Contact" %}
+    {% trans "Create a New User" %}
   {% endif %}
 {% endblock %}
 
 {% block header-link %}
   {% if object %}
-    <a href='{% url contactos_contact_update pk=object.pk %}'>
-      {% trans "Contact Update" %}
+    <a href='{% url contactos_user_update pk=object.pk %}'>
+      {% trans "User Update" %}
     </a>
   {% else %}
-    <a href='{% url contactos_contact_create %}'>
-      {% trans "Contact Create" %}
+    <a href='{% url contactos_user_create %}'>
+      {% trans "User Create" %}
     </a>
   {% endif %}
 {% endblock %}
@@ -37,8 +37,7 @@
 {% endblock %}
 
 {% block content %}
- 
-  <form action='{% if object %}{% url contactos_contact_update pk=object.pk %}{% else %}{% url contactos_contact_create %}{% endif %}' method='post' encoding='utf-8'>
+  <form action='{% if object %}{% url contactos_user_update pk=object.pk %}{% else %}{% url contactos_user_create %}{% endif %}' method='post' encoding='utf-8'>
     <fieldset>
       {% csrf_token %}
       {{ form }}
@@ -53,10 +52,4 @@
       </div>
     </fieldset>
   </form>
-{% endblock %}
-
-{% block mapa %}
-
-		CACAROTOOOOOOOOOOOOOOOOOOOOOOOO
-		<div id="map_canvas" style="width:50%; height:50%"></div>				 
 {% endblock %}

@@ -1,8 +1,10 @@
+
+
 <!DOCTYPE html>
 <html>
   {% load i18n %}
   <head>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <style type="text/css">
       html { height: 100% }
       body { height: 100% }
@@ -37,10 +39,7 @@ function placeMarker(location) {
 }
 		
     </script>
-
-
-  
-      <title>
+    <title>
       {% block title %}
         {% trans "Django Scaffold" %}
       {% endblock %}
@@ -683,24 +682,17 @@ function placeMarker(location) {
       .invisible{visibility:hidden;}
       .fade{opacity:0;filter:alpha(opacity=0);-webkit-transition:opacity 0.15s linear;-moz-transition:opacity 0.15s linear;-ms-transition:opacity 0.15s linear;-o-transition:opacity 0.15s linear;transition:opacity 0.15s linear;}.fade.in{opacity:1;filter:alpha(opacity=100);}
       .collapse{position:relative;height:0;overflow:hidden;-webkit-transition:height 0.35s ease;-moz-transition:height 0.35s ease;-ms-transition:height 0.35s ease;-o-transition:height 0.35s ease;transition:height 0.35s ease;}.collapse.in{height:auto;}
-    </style> 
+    </style>
   </head>
   <body onload="initialize()">
 
     <div class='container'>
       <div class='row'>
-      <div align="right">
-      		{% if user.is_authenticated %}
-    				<p>Welcome, {{ user.username }}. Thanks for logging in.</p>
-				{% else %}
-    				<p>Welcome, new user. Please log in.</p>
-				{% endif %}	
-      </div>
         <div class='page-header site-header'>
           <h1>
             {% block header %}
-              <a href='{% url contactos_contact_list %}'>
-                {% trans "Contacts" %}
+              <a href='{% url contactos_friend_list %}'>
+                {% trans "Friends" %}
               </a>
             {% endblock %}
           </h1>
@@ -713,12 +705,12 @@ function placeMarker(location) {
                     {% trans "Views" %}
                   </li>
                   <li>
-                    <a href='{% url contactos_contact_list %}'>
+                    <a href='{% url contactos_friend_list %}'>
                       {% trans "List View" %}
                     </a>
                   </li>
                   <li>
-                    <a href='{% url contactos_contact_create %}'>
+                    <a href='{% url contactos_friend_create %}'>
                       {% trans "Create View" %}
                     </a>
                   </li>
@@ -729,12 +721,12 @@ function placeMarker(location) {
                       </a>
                     </li>
                     <li>
-                      <a href='{% url contactos_contact_update pk=object.pk %}'>
+                      <a href='{% url contactos_friend_update pk=object.pk %}'>
                         {% trans "Update View" %}
                       </a>
                     </li>
                     <li>
-                      <a href='{% url contactos_contact_delete pk=object.pk %}'>
+                      <a href='{% url contactos_friend_delete pk=object.pk %}'>
                         {% trans "Delete View" %}
                       </a>
                     </li>
@@ -744,12 +736,12 @@ function placeMarker(location) {
                     {% trans "Date-based Views" %}
                   </li>
                   <li>
-                    <a href='{% url contactos_contact_archive_index %}'>
+                    <a href='{% url contactos_friend_archive_index %}'>
                       {% trans "Archive Index" %}
                     </a>
                   </li>
                   {% if object %}
-                    <a href='{% url contactos_contact_date_detail year=object.created_at.year month=object.created_at.month day=object.created_at.day pk=object.pk %}'>
+                    <a href='{% url contactos_friend_date_detail year=object.created_at.year month=object.created_at.month day=object.created_at.day pk=object.pk %}'>
                       {% trans "Date Detail View" %}
                     </a>
                   {% endif %}
@@ -757,7 +749,7 @@ function placeMarker(location) {
                 </ul>
             {% endblock %}
           </div>
-          <div class='span9'>
+          <div class='span7'>
             {% block breadcrumbs %}
             {% endblock %}
             <div class='page-header'>
@@ -771,7 +763,6 @@ function placeMarker(location) {
                 </small>
               </h1>
             </div>
-
             <div class='content'>
               {% block content %}
               {% endblock %}
@@ -779,10 +770,8 @@ function placeMarker(location) {
           </div>
         </div>
       </div>
+
     </div>
-    <div class ='mapa'>
-	 	{% block mapa %}
-	 	{%endblock %}    
-    </div>
+
   </body>
 </html>

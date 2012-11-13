@@ -121,6 +121,10 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'contactos',
     'generate_scaffold',
+    
+)
+
+AUTHENTICATION_BACKENDS = ( 'django.contrib.auth.backends.ModelBackend',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -151,3 +155,14 @@ LOGGING = {
         },
     }
 }
+
+#Constantes para trabajar con API de Twitter
+TWITTER_CONSUMER_KEY = '5vmnObaHgAFPnrjjIuYciw'
+
+TWITTER_CONSUMER_SECRET = 'zDEYXy4sZaBxY0mczESVJvoeFb90XWJopISexhKsgs'
+
+#Para redireccionar al requerir loggearse (autenticarse) al usuario
+LOGIN_URL = '/login/'
+
+#Para poder ligar a usuario con su profile.
+AUTH_PROFILE_MODULE = 'contactos.Profile'

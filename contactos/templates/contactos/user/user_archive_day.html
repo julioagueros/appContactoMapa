@@ -1,0 +1,62 @@
+
+
+{% extends 'contactos/user/base.html' %}
+
+{% load i18n %}
+
+{% block filename %}
+  /home/usuario2012/djangoApps/appContactoMapa/contactos/templates/contactos/user/user_archive_day.html
+{% endblock %}
+{% block title %}
+  {% trans "User Day Archive" %}
+{% endblock %}
+{% block breadcrumbs %}
+  <ul class='breadcrumb'>
+    <li>
+      <a href='{% url contactos_user_archive_index %}'>
+        {% trans "Archive Index" %}
+      </a>
+      <span class='divider'>
+        /
+      </span>
+    </li>
+    <li>
+      <a href='{% url contactos_user_year_archive year=day.year %}'>
+        {% trans "Year Archive" %}
+      </a>
+      <span class='divider'>
+        /
+      </span>
+    </li>
+    <li>
+      <a href='{% url contactos_user_month_archive year=day.year month=day.month %}'>
+        {% trans "Month Archive" %}
+      </a>
+      <span class='divider'>
+        /
+      </span>
+    </li>
+    <li>
+      <a href='{% url contactos_user_day_archive year=day.year month=day.month day=day.day %}'>
+        {% trans "Day Archive" %}
+      </a>
+    </li>
+  </ul>
+{% endblock %}
+{% block header-link %}
+  <a href='{% url contactos_user_day_archive year=day.year month=day.month day=day.day %}'>
+    {% trans "User Day Archive" %}
+  </a>
+{% endblock %}
+{% block header-description %}
+  {% trans "A day archive page showing all objects in a given day." {%
+{% endblock %}
+{% block content %}
+  <h2>
+    {% blocktrans %}
+      Users created on {{ day }}
+    {% endblocktrans %}
+  </h2>
+  {% include 'contactos/user/object_table_list.html' %}
+  {% include 'contactos/user/pagination.html' %}
+{% endblock %}
