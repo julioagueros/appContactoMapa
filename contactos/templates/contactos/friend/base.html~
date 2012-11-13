@@ -16,9 +16,9 @@
         <script type="text/javascript">
 var map;
 function initialize() {
-  var myLatlng = new google.maps.LatLng(-25.363882,131.044922);
+  var myLatlng = new google.maps.LatLng(9.93333339,-84.0833333);
   var mapOptions = {
-    zoom: 4,
+    zoom: 7,
     center: myLatlng,
     mapTypeId: google.maps.MapTypeId.ROADMAP
   }
@@ -44,7 +44,7 @@ function placeMarker(location) {
         {% trans "Django Scaffold" %}
       {% endblock %}
     </title>
-    <style type="text/css" media="screen">
+    <!--<style type="text/css" media="screen">
       /*!
        * Bootstrap v2.0.3
        *
@@ -682,12 +682,19 @@ function placeMarker(location) {
       .invisible{visibility:hidden;}
       .fade{opacity:0;filter:alpha(opacity=0);-webkit-transition:opacity 0.15s linear;-moz-transition:opacity 0.15s linear;-ms-transition:opacity 0.15s linear;-o-transition:opacity 0.15s linear;transition:opacity 0.15s linear;}.fade.in{opacity:1;filter:alpha(opacity=100);}
       .collapse{position:relative;height:0;overflow:hidden;-webkit-transition:height 0.35s ease;-moz-transition:height 0.35s ease;-ms-transition:height 0.35s ease;-o-transition:height 0.35s ease;transition:height 0.35s ease;}.collapse.in{height:auto;}
-    </style>
+    </style> -->
   </head>
   <body onload="initialize()">
 
     <div class='container'>
       <div class='row'>
+            <div align="right">
+      		{% if user.is_authenticated %}
+    				<p>Welcome, {{ user.username }}. Thanks for logging in.</p>
+				{% else %}
+    				<p>Welcome, new user. Please log in.</p>
+				{% endif %}	
+      </div>
         <div class='page-header site-header'>
           <h1>
             {% block header %}
